@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LongToShort</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <h1>LONG<span>TO</span>SHORT</h1>
+      <p class="tagline">Pegá un video largo de YouTube y encontrá sus mejores momentos para Shorts.</p>
+      <form id="analyze-form" class="url-form" autocomplete="off">
+        <label for="url" class="label">Video de YouTube</label>
+        <div class="url-row">
+          <input id="url" type="url" placeholder="https://youtube.com/watch?v=..." required>
+          <button id="analyze-btn" type="submit" class="btn primary">Analizar video</button>
+        </div>
+      </form>
+      <div id="health" class="health" hidden></div>
+    </header>
+
+    <section id="video-section" class="card" hidden>
+      <h2 class="section-title">Video</h2>
+      <div class="video-info">
+        <img id="thumb" alt="" class="thumb">
+        <div class="meta">
+          <h3 id="v-title"></h3>
+          <p id="v-channel" class="muted"></p>
+          <p id="v-details" class="muted small"></p>
+        </div>
+      </div>
+      <div class="status">
+        <p class="status-line">Estado: <strong id="status-text">En cola</strong></p>
+        <div class="stages">
+          <div class="stage" data-stage="downloading">
+            <div class="stage-head"><span>Descargando video</span><span class="pct">0%</span></div>
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+          <div class="stage" data-stage="transcribing">
+            <div class="stage-head"><span>Transcribiendo</span><span class="pct">0%</span></div>
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+          <div class="stage" data-stage="analyzing">
+            <div class="stage-head"><span>Analizando momentos</span><span class="pct">0%</span></div>
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="warnings" class="warnings" hidden></div>
+      <div id="error" class="error" hidden></div>
+    </section>
+
+    <section id="moments-section" class="card" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Mejores momentos</h2>
+        <span id="moments-count" class="muted small"></span>
+      </div>
+      <div class="moments-layout">
+        <ol id="moments" class="moments"></ol>
+        <aside class="preview">
+          <div class="preview-sticky">
+            <video id="player" controls preload="metadata"></video>
+            <p id="preview-label" class="muted small">Tocá "Ver" en un momento para reproducirlo.</p>
+          </div>
+        </aside>
+      </div>
+      <div class="actions">
+        <label class="select-all"><input type="checkbox" id="select-all"> Seleccionar todos</label>
+        <button id="generate-btn" class="btn primary" disabled>Generar Shorts</button>
+      </div>
+      <div id="gen-status" class="gen-status" hidden>
+        <div class="stage-head"><span id="gen-text">Generando…</span><span class="pct" id="gen-pct">0%</span></div>
+        <div class="bar"><div class="fill" id="gen-fill"></div></div>
+      </div>
+    </section>
+
+    <section id="shorts-section" class="card" hidden>
+      <h2 class="section-title">Shorts generados</h2>
+      <p id="output-dir" class="muted small"></p>
+      <div id="shorts" class="shorts"></div>
+    </section>
+  </main>
+
+  <template id="moment-tpl">
+    <li class="moment">
+      <label class="moment-check"><input type="checkbox"></label>
+      <div class="moment-body">
+        <div class="moment-head">
+          <span class="rank"></span>
+          <span class="score"></span>
+          <span class="time"></span>
+          <button type="button" class="btn small ghost play">▶ Ver</button>
+        </div>
+        <p class="hook"></p>
+        <ul class="reasons"></ul>
+        <details>
+          <summary>Texto completo y puntajes</summary>
+          <p class="full-text"></p>
+          <div class="dims"></div>
+        </details>
+      </div>
+    </li>
+  </template>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

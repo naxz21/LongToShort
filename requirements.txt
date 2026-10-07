@@ -1,0 +1,16 @@
+# Servidor
+fastapi>=0.115
+uvicorn>=0.30
+
+# YouTube (el extra "default" incluye yt-dlp-ejs, necesario para resolver los formatos de YouTube)
+yt-dlp[default]>=2025.11.12
+
+# Transcripción local (CTranslate2, funciona en CPU y GPU NVIDIA)
+faster-whisper>=1.1
+
+# Embeddings semánticos multilingües (ONNX, sin PyTorch)
+fastembed>=0.5
+
+# Visión: detección de rostros para el crop vertical
+opencv-python-headless>=4.10
+numpy>=1.26

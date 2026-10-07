@@ -1,0 +1,4 @@
+# Opcional: librerías CUDA 12 para que faster-whisper use una GPU NVIDIA
+# sin instalar el CUDA Toolkit completo. Si no se instalan, se usa la CPU.
+nvidia-cublas-cu12
+nvidia-cudnn-cu12>=9,<10

@@ -1,0 +1,26 @@
+# Entorno
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# Sesión de YouTube (cookies exportadas): nunca al repositorio
+cookies.txt
+
+# Datos generados (videos, modelos, logs): nunca al repositorio
+downloads/*
+output/*
+temp/*
+logs/*
+models/*
+!downloads/.gitkeep
+!output/.gitkeep
+!temp/.gitkeep
+!logs/.gitkeep
+!models/.gitkeep
+
+# Editor / SO
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

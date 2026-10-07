@@ -1,0 +1,71 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8765
+  },
+  "video": {
+    "preferred_height": 1080,
+    "fallback_height": 720,
+    "preferred_codecs": ["avc1", "vp9", "av01"]
+  },
+  "audio": {
+    "prefer_original": true,
+    "verify_language": true
+  },
+  "youtube": {
+    "cookies_file": "cookies.txt",
+    "cookies_from_browser": ""
+  },
+  "transcription": {
+    "model": "large-v3-turbo",
+    "cpu_model": "small",
+    "device": "auto",
+    "compute_type": "auto",
+    "beam_size": 5,
+    "vad_filter": true,
+    "condition_on_previous_text": true,
+    "punctuation_prompt": true
+  },
+  "analysis": {
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sentence_max_pause": 0.9,
+    "sentence_max_duration": 25
+  },
+  "clips": {
+    "min_duration": 20,
+    "max_duration": 60,
+    "duration_flex": 15,
+    "max_candidates": 15,
+    "min_candidates": 5,
+    "min_score": 50,
+    "relative_cutoff": 0.82,
+    "max_overlap": 0.2,
+    "start_padding": 0.15,
+    "end_padding": 0.4
+  },
+  "scoring": {
+    "hook": 0.20,
+    "impact": 0.20,
+    "value": 0.15,
+    "storytelling": 0.15,
+    "autonomy": 0.15,
+    "retention": 0.10,
+    "boundaries": 0.05
+  },
+  "crop": {
+    "mode": "smart",
+    "sample_fps": 3,
+    "face_min_confidence": 0.75,
+    "shot_change_threshold": 0.55,
+    "min_shot_duration": 0.8
+  },
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "video_codec": "libx264",
+    "preset": "medium",
+    "crf": 20,
+    "audio_bitrate": "192k",
+    "audio_fade": 0.04
+  }
+}
